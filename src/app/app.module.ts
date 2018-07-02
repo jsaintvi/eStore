@@ -11,12 +11,15 @@ import { PosModule } from './pos/pos.module';
 import { UserModule } from './user/user.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
+import { SideNavComponent } from './common/shared-components/side-nav/side-nav.component';
+import { SharedComponentsModule } from './common/sharedModules/shared-components/shared-components.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
     ManagerModule,
     InventoryModule,
     PosModule,
-    UserModule
+    UserModule,
+    SharedComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
