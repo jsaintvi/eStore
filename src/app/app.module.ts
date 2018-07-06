@@ -13,13 +13,16 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { SideNavComponent } from './common/shared-components/side-nav/side-nav.component';
 import { SharedComponentsModule } from './common/sharedModules/shared-components/shared-components.module';
+import { ProductComponent } from './common/shared-components/product/product.component';
+import {ProductService} from './common/sharedServices/product.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    SideNavComponent
+    SideNavComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { SharedComponentsModule } from './common/sharedModules/shared-components
     UserModule,
     SharedComponentsModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

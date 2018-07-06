@@ -5,6 +5,8 @@ import {SideNavComponent} from './common/shared-components/side-nav/side-nav.com
 import {SharedComponentsModule} from './common/sharedModules/shared-components/shared-components.module';
 import {commonTestingModules} from './common/sharedModules/shared-components/commonTesting.module';
 import {MatIconModule, MatToolbarModule} from '@angular/material';
+import {HomeComponent} from './home/home.component';
+import {ProductComponent} from './common/shared-components/product/product.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,7 +18,9 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        SideNavComponent
+        SideNavComponent,
+        HomeComponent,
+        ProductComponent
       ],
     }).compileComponents();
   }));
