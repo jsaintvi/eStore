@@ -1,10 +1,7 @@
-/**
- * Once the service is pulling data from a db or some sort of API, the service would need to be mocked
- */
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ProductService } from './product.service';
-import {Product} from '../classes/product';
+import {Product} from '../../classes/product';
 
 describe('ProductService', () => {
   beforeEach(() => {
@@ -18,9 +15,9 @@ describe('ProductService', () => {
   }));
 
   it('should return list of products with count of 10', inject ([ProductService], (service: ProductService) => {
-   let  products: Product[] = new Array<Product>();
+    let  products: Product[] = new Array<Product>();
     service.getProducts().subscribe((product) => {
-       products = product;
+      products = product;
     });
 
     expect(products.length).toEqual(10);

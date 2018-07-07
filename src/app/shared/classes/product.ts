@@ -9,5 +9,4 @@ export class Product implements IProduct {
     // this.rating = rating;
   }
 
-
 }

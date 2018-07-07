@@ -1,26 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import {SharedModule} from './shared/shared.module';
 import { AppComponent } from './app.component';
-import {SideNavComponent} from './common/shared-components/side-nav/side-nav.component';
-import {SharedComponentsModule} from './common/sharedModules/shared-components/shared-components.module';
-import {commonTestingModules} from './common/sharedModules/shared-components/commonTesting.module';
-import {MatIconModule, MatToolbarModule} from '@angular/material';
 import {HomeComponent} from './home/home.component';
-import {ProductComponent} from './common/shared-components/product/product.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        SharedComponentsModule,
-        commonTestingModules
+        SharedModule,
       ],
       declarations: [
         AppComponent,
-        SideNavComponent,
         HomeComponent,
-        ProductComponent
       ],
     }).compileComponents();
   }));

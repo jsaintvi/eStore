@@ -1,9 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+ // mmodules
+
+import {SharedModule} from '../shared/shared.module';
+
+// components
+
 import { HomeComponent } from './home.component';
-import {ProductComponent} from '../common/shared-components/product/product.component';
-import {SharedComponentsModule} from '../common/sharedModules/shared-components/shared-components.module';
-import {MatCardModule} from '@angular/material';
+// import {ProductComponent} from '../shared/components/product/product.component';
+
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,8 +16,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedComponentsModule, MatCardModule],
-      declarations: [ HomeComponent, ProductComponent ]
+      imports: [SharedModule],
+      declarations: [ HomeComponent ]
     })
     .compileComponents();
   }));

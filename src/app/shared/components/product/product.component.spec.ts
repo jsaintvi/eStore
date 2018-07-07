@@ -1,7 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {SharedComponentsModule} from '../../sharedModules/shared-components/shared-components.module';
-import { ProductComponent } from './product.component';
+
+// modules
+
 import {MatCardModule} from '@angular/material';
+
+// components
+import { ProductComponent } from './product.component';
+
+
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -9,10 +15,10 @@ describe('ProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedComponentsModule, MatCardModule],
+      imports: [MatCardModule],
       declarations: [ ProductComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

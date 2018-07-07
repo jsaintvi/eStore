@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {ProductService} from '../../sharedServices/product.service';
+import {ProductService} from '../../services/product/product.service';
 import {Product} from '../../classes/product';
 
 @Component({
@@ -25,10 +25,11 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.productService.getProducts().subscribe((products) => {
+    this.productService.getProducts().subscribe((products) => {
       this.product = products[0];
       this.id = '50';
     });
   }
+
 
 }

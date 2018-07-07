@@ -1,16 +1,15 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MediaChange } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SafeResourceUrl, SafeValue } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { SecurityContext } from '@angular/platform-browser/src/security/dom_sanitization_service';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Observable, of, Subscription } from 'rxjs';
-
-import {AppMaterialModule} from '../../../app-material.module';
-import {SharedComponentsModule} from './shared-components.module';
-
 // tslint:disable-next-line:max-line-length
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
+import {SafeValue, SafeResourceUrl} from '@angular/platform-browser';
+import {Observable, of, Subscription} from 'rxjs';
+import {AppMaterialModule} from '../app-material.module';
+import {MediaChange} from '@angular/flex-layout';
+import {SecurityContext} from '@angular/platform-browser/src/security/dom_sanitization_service';
+
+
 const FAKE_SVGS = {
   lemon: '<svg><path id="lemon" name="lemon"></path></svg>',
 };
@@ -67,12 +66,11 @@ export class DomSanitizerFake {
 }
 
 
-export const commonTestingModules: any[] = [
+export const CommonTestingModules: any[] = [
   FormsModule,
   ReactiveFormsModule,
   AppMaterialModule,
   NoopAnimationsModule,
   HttpClientTestingModule,
   RouterTestingModule,
-  SharedComponentsModule,
 ];

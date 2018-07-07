@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SideNavComponent } from './side-nav.component';
-import {AppComponent} from '../../../app.component';
-import {commonTestingModules} from '../../sharedModules/shared-components/commonTesting.module';
-import {SharedComponentsModule} from '../../sharedModules/shared-components/shared-components.module';
+import {SharedModule} from '../../shared.module';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -11,11 +9,7 @@ describe('SideNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideNavComponent ],
-      imports: [
-        SharedComponentsModule,
-        commonTestingModules
-      ]
+      imports: [SharedModule]
     })
     .compileComponents();
   }));
