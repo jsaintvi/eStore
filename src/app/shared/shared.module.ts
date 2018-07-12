@@ -7,8 +7,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import {CommonTestingModules} from './common-testing.module';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-
 
 @NgModule({
   imports: [
@@ -26,11 +24,10 @@ import { ProductsListComponent } from './components/products-list/products-list.
     AppMaterialModule,
     CommonTestingModules,
     SideNavComponent,
-    ProductComponent,
-    ProductsListComponent
+    ProductComponent
 
   ],
-  declarations: [ProductComponent, SideNavComponent, ProductsListComponent],
+  declarations: [ProductComponent, SideNavComponent],
   providers: [ProductService]
 })
 export class SharedModule { }

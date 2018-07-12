@@ -6,7 +6,6 @@ import {MatCardModule} from '@angular/material';
 
 // components
 import { ProductComponent } from './product.component';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 
 
@@ -16,8 +15,8 @@ describe('ProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
+      imports: [MatCardModule],
+      declarations: [ ProductComponent ]
     })
       .compileComponents();
   }));

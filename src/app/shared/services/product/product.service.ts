@@ -11,14 +11,14 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     const products: Product[] =  new Array<Product>();
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
 
       const item = {
         id: '' + i,
         name: 'Product Name' + (i * 10),
         description: 'Some random description ' + i,
         image: 'assets/img/products/clips.jpg',
-        rating: 4.0 + i,
+        rating: 4.0,
         price: 520
       };
 
