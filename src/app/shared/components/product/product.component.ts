@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ProductService} from '../../services/product/product.service';
-import {Product} from '../../classes/product';
+import {IProduct} from '../../interfaces/product';
 
 @Component({
   selector: 'app-product',
@@ -18,15 +18,20 @@ export class ProductComponent implements OnInit {
   /**
    * Product data
    */
-  product: Product;
+  product: IProduct;
+
+  /**
+   *  Items of product
+   */
+  items = 1;
 
   productForm: FormGroup;
   constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((products) => {
-      this.product = products[0];
+    this.productService.getProductById(10).subscribe((product) => {
+      this.product = product;
       this.id = '50';
     });
   }

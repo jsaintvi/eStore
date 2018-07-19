@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
-import {Product} from '../../classes/product';
+import {IProduct} from '../../interfaces/product';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -9,16 +9,16 @@ import {Observable} from 'rxjs';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  products: Product[] = [];
+  products: IProduct[] = Array<IProduct>();
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.getProducts().subscribe((productList) => {
-      this.products = productList
+      this.products = productList;
     });
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts(): Observable<IProduct[]> {
     return this.productService.getProducts();
   }
 
