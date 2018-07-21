@@ -1,6 +1,3 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav mode="push" class="app-sidenav">
-    <mat-toolbar color="primary">
       <!--future svg to go here-->
       <span class="toolbar-filler"></span>
       <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
@@ -17,20 +14,9 @@
         <mat-icon mat-list-icon>android</mat-icon>
         <span class="title" mat-line>Menu item 2</span>
         <span mat-line class="secondary">test</span>
-      </a>
-    </mat-nav-list>
   </mat-sidenav>
   <mat-toolbar id="appToolbar" color="primary">
     <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
       <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
     </button>
-    <h1 class="component-title">
-      <a class="title-link">{{title}}</a>
-    </h1>
-    <span class="toolbar-filler"></span>
-    <!--<button id="button-login" md-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
-    <button id="button-home" mat-button>eStore</button>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-</mat-sidenav-container>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {AuthService} from '../../../auth-connector/services/auth.service';
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  public currentUser: any;
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.currentUser.subscribe( user => {
+      this.currentUser = user;
+    });
   }
 
 }

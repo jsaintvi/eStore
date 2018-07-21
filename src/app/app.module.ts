@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {environment} from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +14,14 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
 import {ProductService} from './shared/services/product/product.service';
+
+
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import { AuthConnectorModule } from './auth-connector/auth-connector.module';
+import {AuthService} from './auth-connector/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +38,10 @@ import {ProductService} from './shared/services/product/product.service';
     InventoryModule,
     PosModule,
     UserModule,
+    AuthConnectorModule,
     SharedModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
