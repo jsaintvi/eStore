@@ -10,8 +10,6 @@ import {AngularFirestore} from 'angularfire2/firestore';
 export class FirebaseConnector {
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
-    debugger;
-    console.log(afAuth)
   }
 
   /**
@@ -49,6 +47,7 @@ export class FirebaseConnector {
   }
 
   registerUser(registerForm): Observable<any> {
+
     const email = registerForm.email;
     const password = registerForm.password;
 
@@ -61,9 +60,10 @@ export class FirebaseConnector {
 
     return Observable.create((observer) => {
       this.register(email, password).then(authData => {
-        registerForm.uid = userId; //authData.uid;
+        registerForm.uid = authData.user.uid;
 
-        this.db.collection(`users/${userId}`).add(registerForm).then(data => {
+        this.db.doc(`users/${authData.user.uid}`).set(registerForm).then(() => {
+            // logs user in if successful
           this.loginWithEmailAndPassword(email, password).subscribe(loginData => {
             observer.next(loginData);
             observer.complete();
@@ -77,6 +77,9 @@ export class FirebaseConnector {
     });
   }
 
+  private login(email, password) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  }
   /**
    * Login with email and password
    *
@@ -85,9 +88,10 @@ export class FirebaseConnector {
    *
    * @returns {Observable} Observable containing non-null [firebase.User]{@link https://firebase.google.com/docs/reference/js/firebase.User}
    */
-  loginWithEmailAndPassword(email, password) {
-    return Observable.create( observer => {
-      this.afAuth.auth.signInWithEmailAndPassword(email, password)
+  loginWithEmailAndPassword(email, password): Observable<any> {
+
+    return Observable.create( (observer) => {
+      this.login(email, password)
         .then(data => {
           observer.next(data);
           observer.complete();
@@ -112,7 +116,7 @@ export class FirebaseConnector {
    * @returns {Observable<any[]>}
    */
   getUserData(uid) {
-    return of(5); // this.database.ref(`users/${uid}`);
+    return this.db.collection(`users/${uid}`).valueChanges();
   }
 
 }

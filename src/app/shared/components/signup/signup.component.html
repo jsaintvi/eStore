@@ -1,0 +1,40 @@
+<mat-card class="signup-container">
+  <mat-card-header>
+    <mat-card-title>Sign Up</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="signupForm">
+      <div fxLayout="row wrap" fxLayoutGap="5px">
+        <mat-form-field [floatLabel]="auto" class="first-name">
+          <input matInput placeholder="FirtName" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field [floatLabel]="auto" class="last-name">
+          <input matInput placeholder="LastName" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap">
+        <mat-form-field class="email" [floatLabel]="auto">
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap">
+        <mat-form-field class="password" [floatLabel]="auto">
+          <input matInput placeholder="Enter password" formControlName="password" />
+          <mat-hint>Password needs to be at least 5 chars</mat-hint>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row wrap" class="submit-action">
+        <mat-card-actions>
+          <button class="submit-btn" mat-raised-button (click)="submit()">Sign Up</button>
+        </mat-card-actions>
+      </div>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-footer>
+    <button mat-raised-button routerLink="/login">Already have an Account?</button>
+  </mat-card-footer>
+</mat-card>
+

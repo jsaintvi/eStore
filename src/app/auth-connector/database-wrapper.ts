@@ -8,9 +8,7 @@ import {FirebaseConnector} from './firebase-connector';
 @Injectable()
 export class DatabaseWrapper {
 
-  constructor(private connector: FirebaseConnector) {
-    console.log(this.connector)
-    debugger;
+  constructor(@Inject(FirebaseConnector)private connector: FirebaseConnector) {
   }
 
   /**

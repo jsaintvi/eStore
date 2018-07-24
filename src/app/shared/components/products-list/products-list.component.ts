@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {IProduct} from '../../interfaces/product';
 import {Observable} from 'rxjs';
+import {AuthService} from '../../../auth-connector/services/auth.service';
 
 @Component({
   selector: 'app-products-list',
@@ -10,7 +11,7 @@ import {Observable} from 'rxjs';
 })
 export class ProductsListComponent implements OnInit {
   products: IProduct[] = Array<IProduct>();
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private afAuth: AuthService) { }
 
   ngOnInit() {
     this.getProducts().subscribe((productList) => {

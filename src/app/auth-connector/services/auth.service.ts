@@ -15,7 +15,6 @@ export class AuthService {
       this.dal.getAuth().auth.onAuthStateChanged((user) => {
         if (user) {
           this.dal.getUserData(user.uid).subscribe(data => {
-debugger;
           });
         } else {
           this.currentUser =  of(null);

@@ -11,6 +11,7 @@ import {CommonTestingModules} from './common-testing.module';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import {LoginComponent} from './components/login/login.component';
 import {AuthService} from '../auth-connector/services/auth.service';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {AuthService} from '../auth-connector/services/auth.service';
     LoginComponent
 
   ],
-  declarations: [ProductComponent, SideNavComponent, ProductsListComponent, LoginComponent],
+  declarations: [ProductComponent, SideNavComponent, ProductsListComponent, LoginComponent, SignupComponent],
   providers: [ProductService]
 })
 export class SharedModule { }
