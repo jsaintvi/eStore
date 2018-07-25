@@ -13,9 +13,7 @@ export class SideNavComponent implements OnInit {
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.currentUser.subscribe( user => {
-      this.currentUser = user;
-    });
+    this.currentUser = this.auth.userData;
   }
 
 }

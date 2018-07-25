@@ -7,6 +7,7 @@ import {SignupComponent} from './shared/components/signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'products', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},

@@ -5,7 +5,7 @@ export interface IUser {
     firstName: string
     lastName: string
   };
-  dateOfBirth: Date;
+  dateOfBirth: number;
   photoUrl: string;
   role: Role;
 }

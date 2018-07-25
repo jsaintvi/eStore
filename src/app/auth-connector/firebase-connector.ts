@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFirestore} from 'angularfire2/firestore';
+
 @Injectable()
 export class FirebaseConnector {
 
@@ -60,10 +61,12 @@ export class FirebaseConnector {
 
     return Observable.create((observer) => {
       this.register(email, password).then(authData => {
-        registerForm.uid = authData.user.uid;
 
-        this.db.doc(`users/${authData.user.uid}`).set(registerForm).then(() => {
-            // logs user in if successful
+        registerForm.uid =  authData.user.uid;
+
+        this.db.collection('users').doc(authData.user.uid).set(registerForm).then((data) => {
+
+          // logs user if successful
           this.loginWithEmailAndPassword(email, password).subscribe(loginData => {
             observer.next(loginData);
             observer.complete();
@@ -71,6 +74,8 @@ export class FirebaseConnector {
             observer.error(error);
           });
         });
+
+
       }).catch(error => {
         observer.next(error);
       });
@@ -115,8 +120,13 @@ export class FirebaseConnector {
    * @param uid
    * @returns {Observable<any[]>}
    */
-  getUserData(uid) {
-    return this.db.collection(`users/${uid}`).valueChanges();
+  getUserData(uid): Observable<any> {
+    return Observable.create(observer => {
+      this.db.collection('users').doc(`${uid}`).valueChanges().subscribe((data) => {
+        observer.next(data);
+      });
+
+    });
   }
 
 }

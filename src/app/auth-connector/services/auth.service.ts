@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import {DatabaseWrapper} from '../database-wrapper';
-import {Observable, of} from 'rxjs';
+import {observable, Observable, of} from 'rxjs';
 import {IUser} from '../../shared/interfaces/user';
 
 @Injectable({
@@ -8,18 +8,37 @@ import {IUser} from '../../shared/interfaces/user';
 })
 export class AuthService {
 
-  public currentUser: Observable<IUser | null>;
-  public currentUserSnapshot: IUser | null;
+  userData = {};
+  private uid = undefined;
+  // currentUser: Observable<IUser| null>;
+  // currentUserSnapshot: IUser | null;
 
-  constructor(protected dal: DatabaseWrapper) {
-      this.dal.getAuth().auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.dal.getUserData(user.uid).subscribe(data => {
+  constructor(private dal: DatabaseWrapper, private zone: NgZone) {
+    this.dal.getAuth().auth.onAuthStateChanged((authData) => {
+      if (authData === null) {
+        this.userData = {};
+      }
+
+      if (authData) {
+      const uid = authData.uid;
+      this.userData = {};
+      this.userData['uid'] = uid;
+      this.dal.getUserData(uid).subscribe((data) => {
+        const userData = data;
+        if (data) {
+          this.uid = data.uid;
+          delete  data.uid;
+          this.userData = data;
+
+          this.zone.run(() => {
+            this.userData = userData;
           });
-        } else {
-          this.currentUser =  of(null);
         }
       });
+      }
+    });
+
+    // this.setCurrentUserSnapshot();
   }
 
   /**
@@ -51,7 +70,12 @@ export class AuthService {
   public getUserData(userId) {
     return this.dal.getUserData(userId);
   }
-  private setCurrentUserSnapshot(): void {
-    this.currentUser.subscribe(user => this.currentUserSnapshot = user);
-  }
+  // private setCurrentUserSnapshot(): void {
+  //   this.currentUser.subscribe(user => {
+  //     if (user) {
+  //       this.currentUserSnapshot = user;
+  //     }
+  //
+  //   });
+  // }
 }
