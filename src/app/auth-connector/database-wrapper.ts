@@ -64,4 +64,18 @@ export class DatabaseWrapper {
     return this.connector.getAuth();
   }
 
+  getDatabase() {
+    return this.connector.getFirebaseDB();
+  }
+
+  getProducts() {
+    return this.connector.getProducts();
+  }
+
+  getProductById(uid) {
+    return this.connector.getProductById(uid);
+  }
+
+
+
 }

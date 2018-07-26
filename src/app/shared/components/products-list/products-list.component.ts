@@ -11,16 +11,17 @@ import {AuthService} from '../../../auth-connector/services/auth.service';
 })
 export class ProductsListComponent implements OnInit {
   products: IProduct[] = Array<IProduct>();
-  constructor(private productService: ProductService, private afAuth: AuthService) { }
-
-  ngOnInit() {
-    this.getProducts().subscribe((productList) => {
-      this.products = productList;
-    });
+  constructor(private productService: ProductService, private afAuth: AuthService) {
   }
 
-  getProducts(): Observable<IProduct[]> {
-    return this.productService.getProducts();
+  ngOnInit() {
+    this.getProducts();
+  }
+
+  private getProducts() {
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products as Array<IProduct>;
+    });
   }
 
 }

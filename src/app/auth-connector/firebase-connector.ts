@@ -3,7 +3,7 @@
  */
 
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {observable, Observable, of} from 'rxjs';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFirestore} from 'angularfire2/firestore';
 
@@ -123,6 +123,23 @@ export class FirebaseConnector {
   getUserData(uid): Observable<any> {
     return Observable.create(observer => {
       this.db.collection('users').doc(`${uid}`).valueChanges().subscribe((data) => {
+        observer.next(data);
+      });
+
+    });
+  }
+
+  getProducts(): Observable<any[]> {
+    return Observable.create(observer => {
+      this.db.collection('products').valueChanges().subscribe(products => {
+        observer.next(products);
+      });
+    });
+  }
+
+  getProductById(uid): Observable<any> {
+    return Observable.create(observer => {
+      this.db.collection('products').doc(`${uid}`).valueChanges().subscribe((data) => {
         observer.next(data);
       });
 

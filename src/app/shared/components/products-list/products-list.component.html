@@ -1,22 +1,13 @@
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-  <mat-card class="single-product-item" *ngFor="let product of products;" fxFlex.lg="25" fxFlex.xs="50" >
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{product.name}}</mat-card-title>
-      <mat-card-subtitle>{{product.summary}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{product.images[0].fileName}}" alt="{{product.images[0].caption}}">
-    <mat-card-content>
-      <p>
-        {{product.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button routerLink="['/product', 10]">View product</button>
-      <button mat-button>Add to Cart</button>
-    </mat-card-actions>
-  </mat-card>
+<!--<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" *ngFor="let product of products;">-->
+    <!---->
+<!--</div>-->
+
+<div fxLayout="row wrap" fxflex.lg="25" fxFlex.md="33" fxflex.xs="50" class="products-container" fxLayoutGap="10">
+  <div fxFlex *ngFor="let product of products" class="product-item">
+    <app-product [product]="product"></app-product>
+  </div>
 </div>
+
 
 
 

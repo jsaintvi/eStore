@@ -1,4 +1,5 @@
 export interface IProduct {
+  uid: string;
   sku: string;
   category: string;
   title: string;
@@ -11,5 +12,5 @@ export interface IProduct {
 
 export interface IImage {
   caption: string;
-  fileName: string;
+  photoUrl: string;
 }

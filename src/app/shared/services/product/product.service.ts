@@ -1,42 +1,51 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {IProduct} from '../../interfaces/product';
+import {Observable} from 'rxjs';
+import {IImage, IProduct} from '../../interfaces/product';
+import {DatabaseWrapper} from '../../../auth-connector/database-wrapper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private dal: DatabaseWrapper) { }
 
-  getProducts(): Observable<IProduct[]> {
-    const products: Array<IProduct> =  new Array<IProduct>();
-    for (let i = 0; i < 9; i++) {
-      const item: IProduct = {
-        sku: 'some sku',
-        title: 'Product Name ' + (i * 10),
-        description: 'Some description',
-        active: true,
-        summary: this.generateSummary(i),
-        category: 'Movies',
-        price: 10,
-        images: [{
-          caption: 'Jodex picture',
-          fileName: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
-        }]
-      };
-      products.push(item);
-    }
-
-    return of(products);
+  // private readAndtransformToIProduct(): Observable<any> {
+  //   return Observable.create(observer => {
+  //     this.dal.getDatabase().collection('products').valueChanges().subscribe((products) => {
+  //       const productCollections = Array<IProduct>();
+  //       products.forEach((p: any) => {
+  //         productCollections.push(
+  //           {
+  //             uid: p.uid,
+  //             sku: p.sku,
+  //             category: p.category || '',
+  //             title: p.name,
+  //             summary: p.summary,
+  //             description: p.description,
+  //             images: this.readImages(p),
+  //             price: p.price,
+  //             active: p.active
+  //           } as IProduct
+  //         );
+  //       });
+  //
+  //       observer.next(productCollections);
+  //     });
+  //   });
+  // }
+  // private readImages(p: any) {
+  //   const images = Array<IImage>();
+  //   p.images.forEach(image => {
+  //     images.push(<IImage>image);
+  //   });
+  //   return images;
+  // }
+  getProductById(id: number) {
+     return this.dal.getProductById(id);
+  }
+  getProducts() {
+    return this.dal.getProducts();
   }
 
-  getProductById(id: number): Observable<IProduct> {
-    return this.getProducts()[0];
-  }
-
-  private generateSummary(productId: number): string {
-    const summaryId: number = Math.floor (Math.random() * productId * 100 );
-    return 'Some long summary ' + summaryId.toString() + ' by Jodex';
-  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ProductService} from '../../services/product/product.service';
 import {IProduct} from '../../interfaces/product';
@@ -8,17 +8,12 @@ import {IProduct} from '../../interfaces/product';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit {
-
-  /**
-   * Id of product
-   */
-  id: string;
+export class ProductComponent {
 
   /**
    * Product data
    */
-  product: IProduct;
+  @Input() product: IProduct;
 
   /**
    *  Items of product
@@ -29,12 +24,6 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) {
   }
 
-  ngOnInit() {
-    this.productService.getProductById(10).subscribe((product) => {
-      this.product = product;
-      this.id = '50';
-    });
-  }
 
 
 }
