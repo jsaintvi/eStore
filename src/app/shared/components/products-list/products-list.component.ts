@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {IProduct} from '../../interfaces/product';
-import {Observable} from 'rxjs';
-import {AuthService} from '../../../auth-connector/services/auth.service';
+import {BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-products-list',
@@ -11,10 +10,19 @@ import {AuthService} from '../../../auth-connector/services/auth.service';
 })
 export class ProductsListComponent implements OnInit {
   products: IProduct[] = Array<IProduct>();
-  constructor(private productService: ProductService, private afAuth: AuthService) {
+  cols = 3;
+  constructor(private productService: ProductService, private breakPointObserver: BreakpointObserver) {
   }
 
   ngOnInit() {
+    this.breakPointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        this.cols = 2;
+      } else {
+        this.cols = 3;
+      }
+    });
+
     this.getProducts();
   }
 
@@ -23,5 +31,5 @@ export class ProductsListComponent implements OnInit {
       this.products = products as Array<IProduct>;
     });
   }
-
+  
 }

@@ -12,6 +12,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import {LoginComponent} from './components/login/login.component';
 import {AuthService} from '../auth-connector/services/auth.service';
 import { SignupComponent } from './components/signup/signup.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { SignupComponent } from './components/signup/signup.component';
     LoginComponent
 
   ],
-  declarations: [ProductComponent, SideNavComponent, ProductsListComponent, LoginComponent, SignupComponent],
+  declarations: [ProductComponent, SideNavComponent, ProductsListComponent, LoginComponent, SignupComponent, CategoriesComponent],
   providers: [ProductService]
 })
 export class SharedModule { }

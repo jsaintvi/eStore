@@ -76,6 +76,12 @@ export class DatabaseWrapper {
     return this.connector.getProductById(uid);
   }
 
+  getCategories() {
+    return this.connector.getCategories();
+  }
 
 
+  getProductsByCategoryId(id: any) {
+    return this.connector.getProductsByCategory(id)
+  }
 }

@@ -1,15 +1,17 @@
-<!--<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" *ngFor="let product of products;">-->
-    <!---->
-<!--</div>-->
-
-<div fxLayout="row wrap" fxflex.lg="25" fxFlex.md="33" fxflex.xs="50" class="products-container" fxLayoutGap="10">
-  <div fxFlex *ngFor="let product of products" class="product-item">
-    <app-product [product]="product"></app-product>
-  </div>
-</div>
-
-
-
-
+ <mat-grid-list cols="{{cols}}">
+   <mat-grid-tile *ngFor="let product of products">
+     <mat-grid-tile-header>
+       {{product.name}}
+       <span>{{product.description}}</span>
+     </mat-grid-tile-header>
+     <div class="image-content">
+       <img src="{{product.images[0].photoUrl}}" alt="{{product.images[0].photoUrl}}"/>
+     </div>
+     <mat-grid-tile-footer class="product-footer-actions" fxLayoutAlign="end" fxLayoutGap="5px">
+       <button mat-button routerLink="['/product', {{product.uid}}]">View product</button>
+       <button mat-button>Add to Cart</button>
+     </mat-grid-tile-footer>
+   </mat-grid-tile>
+  </mat-grid-list>
 
 

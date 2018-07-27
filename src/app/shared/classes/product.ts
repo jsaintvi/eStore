@@ -3,7 +3,7 @@ import {ɵEMPTY_ARRAY} from '@angular/core';
 
 export class Product implements IProduct {
   constructor(public uid: string, public sku: string,
-              public title: string, public description: string,
+              public name: string, public description: string,
               public summary: string, public category: string, public price: number,
               public active: boolean, public images: Array<IImage>) {
 
@@ -13,7 +13,7 @@ export class Product implements IProduct {
     this.category = category;
     this.images = Array<IImage>();
     this.description = description;
-    this.title = title;
+    this.name = name;
     this.price = price;
     this.uid = uid;
 

@@ -2,7 +2,7 @@ export interface IProduct {
   uid: string;
   sku: string;
   category: string;
-  title: string;
+  name: string;
   summary: string;
   description: string;
   images: Array<IImage>;

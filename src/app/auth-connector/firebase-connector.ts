@@ -146,4 +146,15 @@ export class FirebaseConnector {
     });
   }
 
+  getCategories(): Observable<any> {
+    return Observable.create(observer => {
+      this.db.collection('categories').valueChanges().subscribe(categories => {
+        observer.next(categories);
+      });
+    });
+  }
+
+  getProductsByCategory(id: any) {
+
+  }
 }

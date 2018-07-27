@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let category of categories">
+    <mat-grid-tile-header>
+      {{category.name}}
+    </mat-grid-tile-header>
+    <mat-grid-tile-footer fxLayoutAlign="end">
+        <button mat-button routerLink="['product]', {{category.uid}}]">View products</button>
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>

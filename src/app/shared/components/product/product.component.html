@@ -1,18 +1,4 @@
-<mat-card class="product-card-item" fxFlex.xs="50" fxflex.md="33" fxflex.lg="25">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{product.title}}</mat-card-title>
-    <mat-card-subtitle>{{product.description}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{product.images[0].photoUrl}}" alt="{{product.images[0].caption}}">
-  <mat-card-content fxLayout="row wrap" fxLayoutAlign="center">
-      {{product.summary}}
-  </mat-card-content>
-  <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
-    <button mat-button routerLink="['/product', {{product.uid}}]">View product</button>
-    <button mat-button>Add to Cart</button>
-  </mat-card-actions>
-</mat-card>
+
 
 
 
