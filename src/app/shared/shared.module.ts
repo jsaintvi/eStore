@@ -13,6 +13,7 @@ import {LoginComponent} from './components/login/login.component';
 import {AuthService} from '../auth-connector/services/auth.service';
 import { SignupComponent } from './components/signup/signup.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import {MediaObserverService} from './services/media-observer.service';
 
 
 @NgModule({
@@ -37,6 +38,6 @@ import { CategoriesComponent } from './components/categories/categories.componen
 
   ],
   declarations: [ProductComponent, SideNavComponent, ProductsListComponent, LoginComponent, SignupComponent, CategoriesComponent],
-  providers: [ProductService]
+  providers: [ProductService, MediaObserverService]
 })
 export class SharedModule { }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {IProduct} from '../../interfaces/product';
-import {BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/layout';
+import {MediaObserverService} from '../../services/media-observer.service';
+import {MediaEnum} from '../../enums/media.enum';
 
 @Component({
   selector: 'app-products-list',
@@ -10,26 +11,33 @@ import {BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/lay
 })
 export class ProductsListComponent implements OnInit {
   products: IProduct[] = Array<IProduct>();
-  cols = 3;
-  constructor(private productService: ProductService, private breakPointObserver: BreakpointObserver) {
+  cols: number;
+
+  constructor(private productService: ProductService, private mediaQuery: MediaObserverService) {
   }
 
   ngOnInit() {
-    this.breakPointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).subscribe((state: BreakpointState) => {
-      if (state.matches) {
-        this.cols = 2;
-      } else {
-        this.cols = 3;
-      }
-    });
-
+    this.cols = 1;
+    this.listenToViewportChanges();
     this.getProducts();
   }
 
+  private listenToViewportChanges() {
+    this.mediaQuery.getMedia().subscribe((media) => {
+      debugger;
+      if (media === MediaEnum.XSMALL) {
+        this.cols = 1;
+      } else if ( media === MediaEnum.SMALL) {
+        this.cols = 2;
+      } else  {
+        this.cols = 3;
+      }
+    });
+  }
   private getProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.products = products as Array<IProduct>;
     });
   }
-  
+
 }
