@@ -68,8 +68,8 @@ export class DatabaseWrapper {
     return this.connector.getFirebaseDB();
   }
 
-  getProducts() {
-    return this.connector.getProducts();
+  getProducts(categoryId?: string) {
+    return this.connector.getProducts(categoryId);
   }
 
   getProductById(uid) {

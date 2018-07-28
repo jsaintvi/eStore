@@ -13,8 +13,8 @@ export class ProductService {
   getProductById(id: number) {
      return this.dal.getProductById(id);
   }
-  getProducts() {
-    return this.dal.getProducts();
+  getProducts(categoryId?: string) {
+    return this.dal.getProducts(categoryId);
   }
 
   getCategories() {

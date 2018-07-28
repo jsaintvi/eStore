@@ -129,10 +129,16 @@ export class FirebaseConnector {
     });
   }
 
-  getProducts(): Observable<any[]> {
+  getProducts(categoryId?: string): Observable<any[]> {
     return Observable.create(observer => {
       this.db.collection('products').valueChanges().subscribe(products => {
-        observer.next(products);
+        let productMatches = products;
+        if (categoryId.length > 0) {
+          productMatches = productMatches.filter((product: any) => {
+            return product.categoryId === categoryId;
+          });
+        }
+        observer.next(productMatches);
       });
     });
   }

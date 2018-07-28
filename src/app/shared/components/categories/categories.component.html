@@ -1,6 +1,6 @@
 <h1>Categories</h1>
 <mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let category of categories">
+  <mat-grid-tile *ngFor="let category of categories" (click)="onSelect(category.uid)">
     <mat-grid-tile-header>
       {{category.name}}
     </mat-grid-tile-header>

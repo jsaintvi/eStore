@@ -26,6 +26,6 @@ export class CategoriesComponent implements OnInit {
 
 
   onSelect(categoryId) {
-    this.router.navigate(['products', categoryId])
+    this.router.navigate(['products', categoryId]);
   }
 }
