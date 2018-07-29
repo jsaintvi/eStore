@@ -1,15 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductsListComponent } from './products-list.component';
+import {commonTestingProviders, commonTestingModules, MediaObserverFakeService} from '../../../common/commonTesting';
+import {SearchBarComponent} from '../search-bar/search-bar.component';
+import {MediaObserverService} from '../../services/media-observer.service';
+import {ActivatedRoute} from '@angular/router';
+import {of} from 'rxjs';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-describe('ProductsListComponent', () => {
+xdescribe('ProductsListComponent', () => {
   let component: ProductsListComponent;
   let fixture: ComponentFixture<ProductsListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductsListComponent ],
+      imports: commonTestingModules,
+      providers: commonTestingProviders.concat([
+        {provide: MediaObserverService, useClass: MediaObserverFakeService},
+      ]),
+      declarations: [ ProductsListComponent, SearchBarComponent ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
@@ -24,10 +33,10 @@ describe('ProductsListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should have 9 products', () => {
-    expect(component.products.length).toEqual(9);
+  it('should have 1 products', () => {
+    expect(component.products.length).toEqual(1);
   });
-  it('should the first item rating to equal 5 ', () => {
-    expect(component.products[1].rating).toEqual(5.0);
+  it('should the first item name to equal shirt ', () => {
+    expect(component.products[1].name).toEqual('shirt');
   });
 });

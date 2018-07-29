@@ -68,20 +68,19 @@ export class DatabaseWrapper {
     return this.connector.getFirebaseDB();
   }
 
-  getProducts(categoryId?: string) {
-    return this.connector.getProducts(categoryId);
+  getAllProducts() {
+    return this.connector.getAllProducts();
   }
 
   getProductById(uid) {
     return this.connector.getProductById(uid);
   }
 
-  getCategories() {
-    return this.connector.getCategories();
+  getProductByCategoryId(categoryId) {
+    return this.connector.getProductByCategoryIds(categoryId);
   }
 
-
-  getProductsByCategoryId(id: any) {
-    return this.connector.getProductsByCategory(id)
+  getCategories() {
+    return this.connector.getCategories();
   }
 }

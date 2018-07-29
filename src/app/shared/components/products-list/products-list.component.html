@@ -1,17 +1,18 @@
- <mat-grid-list cols="{{cols}}">
-   <mat-grid-tile *ngFor="let product of products">
-     <mat-grid-tile-header>
-       {{product.name}}
-       <span>{{product.description}}</span>
-     </mat-grid-tile-header>
-     <div class="image-content">
-       <img src="{{product.images[0].photoUrl}}" alt="{{product.images[0].photoUrl}}"/>
-     </div>
-     <mat-grid-tile-footer class="product-footer-actions" fxLayoutAlign="end" fxLayoutGap="5px">
-       <button mat-button routerLink="['/product', {{product.uid}}]">View product</button>
-       <button mat-button>Add to Cart</button>
-     </mat-grid-tile-footer>
-   </mat-grid-tile>
-  </mat-grid-list>
+<app-search-bar (outProductsSearch)="displayProductSearchResult($event)"></app-search-bar>
+<mat-grid-list cols="{{cols}}">
+  <mat-grid-tile *ngFor="let product of products">
+    <mat-grid-tile-header>
+      {{product.name}}
+    </mat-grid-tile-header>
+    <div class="image-content">
+      <img src="{{product.images[0].photoUrl}}" alt="{{product.images[0].photoUrl}}"/>
+    </div>
+    <mat-grid-tile-footer class="product-footer-actions" fxLayoutAlign="end" fxLayoutGap="5px">
+      <button mat-button routerLink="['/product', {{product.uid}}]">View product</button>
+      <button mat-button>Add to Cart</button>
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>
+
 
 

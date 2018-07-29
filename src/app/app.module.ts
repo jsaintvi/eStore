@@ -9,7 +9,6 @@ import { ManagerModule } from './manager/manager.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { PosModule } from './pos/pos.module';
 import { UserModule } from './user/user.module';
-import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
 import {ProductService} from './shared/services/product/product.service';
@@ -21,7 +20,6 @@ import {AuthService} from './auth-connector/services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     PageNotFoundComponent,
   ],
   imports: [

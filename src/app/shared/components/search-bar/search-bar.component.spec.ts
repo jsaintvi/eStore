@@ -1,25 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideNavComponent } from './side-nav.component';
-import {SharedModule} from '../../shared.module';
-
+import { SearchBarComponent } from './search-bar.component';
 import {commonTestingProviders, commonTestingModules} from '../../../common/commonTesting';
 
-describe('SideNavComponent', () => {
-  let component: SideNavComponent;
-  let fixture: ComponentFixture<SideNavComponent>;
+describe('SearchBarComponent', () => {
+  let component: SearchBarComponent;
+  let fixture: ComponentFixture<SearchBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: commonTestingModules,
       providers: commonTestingProviders,
-      declarations: [SideNavComponent]
+      declarations: [ SearchBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SideNavComponent);
+    fixture = TestBed.createComponent(SearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -28,4 +26,10 @@ describe('SideNavComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should search for an item with name "shirt"', () => {
+    component.change('shirt');
+    component.inputSubject.asObservable().subscribe((result) => {
+      expect(result.length).toEqual(1);
+    });
+  });
 });

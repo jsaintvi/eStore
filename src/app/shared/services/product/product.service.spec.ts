@@ -2,11 +2,15 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { ProductService } from './product.service';
 import {Product} from '../../classes/product';
+import {ProductServiceFakeService} from './product-service-fake.service';
+import {IProduct} from '../../interfaces/product';
+import {commonTestingProviders, commonTestingModules} from '../../../common/commonTesting';
 
 describe('ProductService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProductService]
+      imports: commonTestingModules,
+      providers: commonTestingProviders,
     });
   });
 
@@ -14,21 +18,21 @@ describe('ProductService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return list of products with count of 9', inject ([ProductService], (service: ProductService) => {
-    let  products: Product[] = new Array<Product>();
-    service.getProducts().subscribe((product) => {
+  it('should return list of products with count of 1', inject ([ProductService], (service: ProductService) => {
+    let  products: IProduct[] = new Array<IProduct>();
+    service.getAllProducts().subscribe((product) => {
       products = product;
     });
 
-    expect(products.length).toEqual(9);
+    expect(products.length).toEqual(1);
   }));
 
   it ('should have first product with description Some random description 0', inject([ProductService], (service) => {
     let product: Product;
-    service.getProducts().subscribe((products) => {
+    service.getAllProducts().subscribe((products) => {
       product = products[0];
     });
 
-    expect(product.description).toContain('Some random description 0');
+    expect(product.description).toContain('shirt description');
   }));
 });

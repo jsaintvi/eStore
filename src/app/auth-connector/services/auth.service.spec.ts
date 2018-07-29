@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
+import {AuthServiceFakeService} from './auth-service-fake.service';
+import {commonTestingProviders} from '../../common/commonTesting';
 
 describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: commonTestingProviders
     });
   });
 

@@ -1,21 +1,25 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import {SharedModule} from './shared/shared.module';
 import { AppComponent } from './app.component';
-import {HomeComponent} from './home/home.component';
-
-
+import {commonTestingProviders, commonTestingModules, ObservableMediaFake, MatIconRegistryFake} from './common/commonTesting';
+import {ObservableMedia} from '@angular/flex-layout';
+import {MatIconRegistry} from '@angular/material';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        SharedModule,
+        commonTestingModules
       ],
       declarations: [
         AppComponent,
-        HomeComponent,
       ],
+      providers: commonTestingProviders.concat([
+        {provide: ObservableMedia, useClass: ObservableMediaFake},
+        {provide: MatIconRegistry, useClass: MatIconRegistryFake}
+      ]),
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

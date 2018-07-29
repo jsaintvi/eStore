@@ -28,10 +28,10 @@
     </a>
     <span class="flex-spacer"></span>
     <button mat-mini-fab routerLink="/login"
-            matTooltip="Profile" aria-label="User Profile" fxShow="{{isLoggedin}} "><mat-icon>account_circle</mat-icon>
+            matTooltip="Profile" aria-label="User Profile" fxShow="{{isLoggedin}}"><mat-icon>account_circle</mat-icon>
     </button>
     <button  mat-mini-fab routerLink="/signup"
-             matTooltip="Logout" aria-label="Logout" fxShow="{{!isLoggedin}}"><mat-icon>lock_open</mat-icon>
+             matTooltip="Logout" aria-label="Logout" fxShow="{{isLoggedin}}"><mat-icon>lock_open</mat-icon>
     </button>
   </mat-toolbar>
   <router-outlet></router-outlet>

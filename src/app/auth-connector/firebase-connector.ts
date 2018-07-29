@@ -129,16 +129,10 @@ export class FirebaseConnector {
     });
   }
 
-  getProducts(categoryId?: string): Observable<any[]> {
+  getAllProducts(): Observable<any[]> {
     return Observable.create(observer => {
       this.db.collection('products').valueChanges().subscribe(products => {
-        let productMatches = products;
-        if (categoryId.length > 0) {
-          productMatches = productMatches.filter((product: any) => {
-            return product.categoryId === categoryId;
-          });
-        }
-        observer.next(productMatches);
+        observer.next(products);
       });
     });
   }
@@ -152,15 +146,25 @@ export class FirebaseConnector {
     });
   }
 
+  getProductByCategoryIds(uid): Observable<any> {
+    return Observable.create(observer => {
+      this.db.collection('products').valueChanges().subscribe(products => {
+        let productMatches = products;
+        if (uid.length > 0) {
+          productMatches = productMatches.filter((product: any) => {
+            return product.categoryId === uid;
+          });
+        }
+        observer.next(productMatches);
+      });
+    });
+  }
+
   getCategories(): Observable<any> {
     return Observable.create(observer => {
       this.db.collection('categories').valueChanges().subscribe(categories => {
         observer.next(categories);
       });
     });
-  }
-
-  getProductsByCategory(id: any) {
-
   }
 }

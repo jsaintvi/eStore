@@ -31,6 +31,10 @@ export class ProductsListComponent implements OnInit {
     this.getProducts();
   }
 
+  displayProductSearchResult(data) {
+    this.products = data;
+  }
+
   private listenToViewportChanges() {
     this.mediaQuery.getMedia().subscribe((media) => {
       if (media === MediaEnum.XSMALL) {
@@ -43,9 +47,16 @@ export class ProductsListComponent implements OnInit {
     });
   }
   private getProducts() {
-    this.productService.getProducts(this.categoryId).subscribe((products) => {
-      this.products = products as Array<IProduct>;
-    });
+    if (this.categoryId.length) {
+      this.productService.getProductsByCategoryId(this.categoryId).subscribe((products) => {
+        this.products = products as Array<IProduct>;
+      });
+    } else {
+      this.productService.getAllProducts().subscribe(products => {
+        this.products = products as Array<IProduct>;
+      });
+    }
+
   }
 
 }

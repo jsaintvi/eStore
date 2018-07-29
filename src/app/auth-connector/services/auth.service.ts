@@ -2,11 +2,12 @@ import {Injectable, NgZone} from '@angular/core';
 import {DatabaseWrapper} from '../database-wrapper';
 import {observable, Observable, of} from 'rxjs';
 import {IUser} from '../../shared/interfaces/user';
+import {IAuthService} from '../../shared/interfaces/auth-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements IAuthService {
 
   userData = {};
   private uid = undefined;
